@@ -5,7 +5,8 @@ class Auth extends React.Component {
         super()
 
         this.state = {
-
+            username: '',
+            password: ''
         }
     }
     render() {
@@ -17,7 +18,17 @@ class Auth extends React.Component {
 
                 <h1>Auth</h1>
 
+                <h2>username:</h2>
+                <input type="text"/>
+                
+                <h2>password:</h2>
+                <input type="text"/>
 
+                <br/>
+                <br/>
+
+                <button>login</button>
+                <button>register</button>
 
 
             </div>

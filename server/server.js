@@ -8,7 +8,8 @@ const app = express()
 app.use(express.json())
 
 //endpoints
-
+app.post('auth/register', c.register)
+app.post('/auth/login', c.login)
 
 //listening
 massive(CONNECTION_STRING).then(databaseConnection => {
