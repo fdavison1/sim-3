@@ -6,8 +6,8 @@ module.exports = {
         const { username, password } = req.body
         // console.log(username, password)
         const found = await db.find_user({ username })
-        // console.log(found[0].count) //0
-        if (found[0].count === 1) {
+        console.log(found[0].count)
+        if (found[0].count !== 1) {
             return res.status(409).send({ message: 'email already in use' })
         }
         let  profile_pic  = `https://robohash.org/${username}`
@@ -21,8 +21,8 @@ module.exports = {
 
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
-        db.add_hash({ id: user_id[0].id, hash })
-        console.log(user_id[0].id)
+        db.add_hash( [user_id[0].id, hash] )
+        // console.log(user_id[0].id)
 
         req.session.user = { id: user_id[0].id, username, profile_pic }
         res.status(201).send({ message: 'logged in', user: req.session.user })
