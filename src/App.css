@@ -24,3 +24,10 @@ img {
   height: 50px;
   /* border: solid red; */
 }
+
+.posts {
+  border: solid yellow;
+  width: 600px;
+  margin: 10px auto;
+}
+

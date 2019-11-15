@@ -50,7 +50,15 @@ module.exports = {
         res.status(200).send({message: 'logged in', user: req.session.user})
 
     },
-    logout: (req, res) => {}
+    logout: (req, res) => {
+
+    },
+    posts: (req, res) => {
+        const db = req.app.get('db')
+        db.get_posts().then(result => {
+            res.status(200).send(result)
+        })
+    }
 
     
 }

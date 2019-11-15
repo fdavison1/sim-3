@@ -1,8 +1,8 @@
 import React from 'react'
 
 class Post extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
 
@@ -10,9 +10,15 @@ class Post extends React.Component{
     }
     render(){
         return(
-            <div>
+            <div className='posts'>
 
-            <h1>Post</h1>
+        <h1>{this.props.posts.title}</h1>
+        <img src={this.props.posts.img} alt="{this.props.posts.title"/>
+        <p>{this.props.posts.content}</p>
+        <p>{this.props.posts.username}</p>
+        <img src={this.props.posts.profile_pic} alt=""/>
+
+
 
 
             </div>

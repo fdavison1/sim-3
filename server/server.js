@@ -20,6 +20,8 @@ app.post('/auth/register', c.register)
 app.post('/auth/login', c.login)
 app.delete('/auth/logout', c.logout)
 
+app.get('/api/posts', c.posts)
+
 //listening
 massive(CONNECTION_STRING).then(databaseConnection => {
     app.set('db', databaseConnection)
