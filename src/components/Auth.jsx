@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+// import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {nav} from '../ducks/reducer'
 
 class Auth extends React.Component {
     constructor() {
@@ -27,6 +29,7 @@ class Auth extends React.Component {
         axios.post('auth/login', {username, password})
         .then(res => {
             this.props.history.push('/dash')
+            this.props.nav(res.data.user)
         })
     }
 
@@ -84,4 +87,8 @@ class Auth extends React.Component {
     }
 }
 
-export default Auth
+// function mapStateToProps(state){
+//     state
+// }
+
+export default connect(null, {nav})(Auth)
