@@ -11,4 +11,10 @@ app.use(express.json())
 
 
 //listening
-app.listen(SERVER_PORT, ()=> console.log(`server ${SERVER_PORT} is on and ready to rock`))
+massive(CONNECTION_STRING).then(databaseConnection => {
+    app.set('db', databaseConnection)
+    app.listen(SERVER_PORT, ()=> console.log(`server ${SERVER_PORT} is on and ready to rock`))
+})
+
+
+
