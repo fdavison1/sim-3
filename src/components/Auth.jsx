@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 
 class Auth extends React.Component {
     constructor() {
@@ -22,12 +23,14 @@ class Auth extends React.Component {
     
     login = () => {
         const {username, password} = this.state
-        console.log(username, password)
+        // console.log(username, password)
         axios.post('auth/login', {username, password})
         .then(res => {
-            console.log(res.data.user)
+            this.props.history.push('/dash')
         })
     }
+
+  
 
 
     handleUsername(e){
@@ -67,9 +70,13 @@ class Auth extends React.Component {
 
                 <button
                 onClick={()=> this.register()}>register</button>
+                
+                
+                {/* <Link to='/dash'> */}
                 <button
                 onClick={()=> this.login()}
                 >login</button>
+                {/* </Link> */}
 
 
             </div>

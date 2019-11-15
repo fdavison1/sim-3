@@ -38,7 +38,7 @@ module.exports = {
         }
 
         const user = await db.find_hash({username})
-        console.log(user)
+        // console.log(user)
         const hash = user[0].password
         // console.log(hash)
         const goodPassword = bcrypt.compareSync(password, hash)
@@ -46,7 +46,7 @@ module.exports = {
             return res.status(403).send('incorrect password')
         }
         req.session.user = { user: user[0] }
-        console.log(req.session.user)
+        // console.log(req.session.user)
         res.status(200).send({message: 'logged in', user: req.session.user})
 
     },
