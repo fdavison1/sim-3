@@ -51,7 +51,9 @@ module.exports = {
 
     },
     logout: (req, res) => {
-
+        // console.log('fred')
+        req.session.destroy()
+        res.sendStatus(200)
     },
     posts: (req, res) => {
         const db = req.app.get('db')

@@ -1,19 +1,35 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import axios from 'axios'
+import {logout} from '../ducks/reducer'
+
 
 class Nav extends React.Component{
     constructor(props){
         super(props)
 
         this.state = {
-
+            display: true
         }
     }
 
-    componentDidMount(){
-        console.log(this.props)
+    // componentDidMount(){
+    //     console.log(this.props)
+    // }
+
+    logout = () => {
+        axios.delete('/auth/logout').then(res => {
+            // return this.props.logout()
+            return console.log('logged out')
+            // this.logout2()
+            
+        })
     }
+
+    // logout2(){
+        // this.props.logout()
+    // }
 
     render(){
         return(
@@ -21,6 +37,8 @@ class Nav extends React.Component{
 
             {/* {this.props.location.pathname('/') && test } */}
 
+            {/* {this.state.display && */}
+            {/* <div> */}
 
             <div className="profile">
             <h2>Nav</h2>
@@ -43,8 +61,12 @@ class Nav extends React.Component{
             </Link>
 
             <Link to='/'>
-            <button>logout</button>
+            <button
+            onClick={this.logout()}
+            >logout</button>
             </Link>
+            
+            {/* </div>} */}
 
             <hr/>
 
@@ -57,4 +79,4 @@ function mapStateToProps(state){
     return state
 }
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps, {logout})(Nav)

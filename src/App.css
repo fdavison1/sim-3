@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -8,6 +9,7 @@ h2 {
 
 nav {
   background: lightblue;
+  /* height: 150px; */
 }
 
 nav .profile{
@@ -26,8 +28,31 @@ img {
 }
 
 .posts {
-  border: solid yellow;
+  border: 1px solid black;
   width: 600px;
   margin: 10px auto;
+  background: white;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.author {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  /* background: lightslategrey; */
+}
+
+span {
+  font-size: 3rem;
+}
+
+button:hover {
+  background: yellow;
+  border: solid black;
 }
 

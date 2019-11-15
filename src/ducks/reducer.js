@@ -6,12 +6,13 @@ const initialState = {
 
 //action constants
 export const NAV = "NAV"
+export const LOGOUT = "LOGOUT"
 
 
 //action builders
 export function nav(userObj) {
 
-    console.log(userObj)
+    // console.log(userObj)
     // const {username, id, profile_pic} = this.state
     return {
         type: NAV,
@@ -23,12 +24,25 @@ export function nav(userObj) {
     }
 }
 
+export function logout() {
+    return {
+        type: LOGOUT,
+        payload: {
+            username: '',
+            id: '',
+            profile_pic: ''
+        }
+    }
+}
+
 
 //reducer
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case NAV: 
-           return {...state, ...action.payload} 
+        case NAV:
+            return { ...state, ...action.payload }
+        case LOGOUT:
+            return { ...action.payload }
         default: return state
     }
 }
