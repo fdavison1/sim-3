@@ -9,12 +9,15 @@ class Dash extends React.Component{
         this.state = {
             posts: []
         }
+        this.getAllPosts = this.getAllPosts.bind(this)
     }
 
 
     componentDidMount(){
         this.getAllPosts()
     }
+
+    
 
     getAllPosts(){
         axios.get('/api/posts').then(res=> {
@@ -49,6 +52,7 @@ class Dash extends React.Component{
             <Post 
             key={i}
             posts={post}
+            getAllPosts = {this.getAllPosts}
             />
             ))}
 

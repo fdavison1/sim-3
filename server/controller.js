@@ -60,6 +60,18 @@ module.exports = {
         db.get_posts().then(result => {
             res.status(200).send(result)
         })
+    },
+    editPost: (req, res) => {
+        // console.log('req.body' + req.body)
+        const db = req.app.get('db')
+        const {id} = req.query
+        // console.log(id)
+        const {title, image, content} = req.body
+        db.edit_post({title, image, content, id}).then(result=> {
+            // console.log(result)
+            res.status(200).send(result)
+        })
+        
     }
 
     
