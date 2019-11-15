@@ -18,3 +18,9 @@ CREATE TABLE posts(
     author_id INT REFERENCES users(id)
 );
 
+--dummy data
+
+INSERT INTO users (username, profile_pic)
+VALUES ('fred', 'fred'),
+('fred2', 'fred2'),
+('fred3', 'fred3');

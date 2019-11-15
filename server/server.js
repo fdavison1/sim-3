@@ -1,14 +1,22 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
+const session = require('express-session')
 const c = require('./controller')
-const {SERVER_PORT, CONNECTION_STRING} = process.env
+const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
 const app = express()
+
+//middleware
 app.use(express.json())
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: true,
+    saveUninitialized: false
+}))
 
 //endpoints
-app.post('auth/register', c.register)
+app.post('/auth/register', c.register)
 app.post('/auth/login', c.login)
 
 //listening
