@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 class Auth extends React.Component {
     constructor() {
@@ -9,6 +10,39 @@ class Auth extends React.Component {
             password: ''
         }
     }
+
+
+    register = () => {
+        const {username, password} = this.state
+        axios.post('auth/register', {username, password})
+        .then(res => {
+            console.log(res.data.user)
+        })
+    }
+    
+    login = () => {
+        const {username, password} = this.state
+        console.log(username, password)
+        axios.post('auth/login', {username, password})
+        .then(res => {
+            console.log(res.data.user)
+        })
+    }
+
+
+    handleUsername(e){
+        this.setState({
+            username: e
+        })
+    }
+    handlePassword(e){
+        this.setState({
+            password: e
+        })
+    }
+
+
+
     render() {
         return (
             <div>
@@ -19,16 +53,23 @@ class Auth extends React.Component {
                 <h1>Auth</h1>
 
                 <h2>username:</h2>
-                <input type="text"/>
+                <input 
+                onChange={(e)=> this.handleUsername(e.target.value)}
+                type="text"/>
                 
                 <h2>password:</h2>
-                <input type="text"/>
+                <input 
+                onChange={(e)=> this.handlePassword(e.target.value)}
+                type="text"/>
 
                 <br/>
                 <br/>
 
-                <button>login</button>
-                <button>register</button>
+                <button
+                onClick={()=> this.register()}>register</button>
+                <button
+                onClick={()=> this.login()}
+                >login</button>
 
 
             </div>

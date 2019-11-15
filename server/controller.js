@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     register: async (req, res) => {
+        console.log('fred')
         const db = req.app.get('db')
         const { username, password } = req.body
         // console.log(username, password)
@@ -25,7 +26,7 @@ module.exports = {
         // console.log(user_id[0].id)
 
         req.session.user = { id: user_id[0].id, username, profile_pic }
-        res.status(201).send({ message: 'logged in', user: req.session.user })
+        res.status(201).send({ message: 'registered', user: req.session.user })
     },
     login: async (req, res) => {
         const db = req.app.get('db')
@@ -37,15 +38,19 @@ module.exports = {
         }
 
         const user = await db.find_hash({username})
-        // console.log(user)
+        console.log(user)
         const hash = user[0].password
         // console.log(hash)
         const goodPassword = bcrypt.compareSync(password, hash)
         if(!goodPassword){
             return res.status(403).send('incorrect password')
         }
-        res.status(200).send(req.session.user)
+        req.session.user = { user: user[0] }
         console.log(req.session.user)
+        res.status(200).send({message: 'logged in', user: req.session.user})
 
-    }
+    },
+    logout: (req, res) => {}
+
+    
 }
