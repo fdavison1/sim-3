@@ -17,15 +17,22 @@ class Nav extends React.Component{
 
     render(){
         return(
-            <div>
+            <nav>
 
             {/* {this.props.location.pathname('/') && test } */}
 
 
+            <div className="profile">
             <h2>Nav</h2>
             <h2>username: {this.props.username}</h2>
+            
+            
+            <div className="pic">
+
             <h2>profile pic:</h2>
             <img src={this.props.profile_pic} alt=""/>
+            </div>
+                </div>
 
             <Link to='/dash'>
             <button>home</button>
@@ -41,7 +48,7 @@ class Nav extends React.Component{
 
             <hr/>
 
-            </div>
+            </nav>
         )
     }
 }

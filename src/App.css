@@ -5,3 +5,22 @@
 h2 {
   color: red;
 }
+
+nav {
+  background: lightblue;
+}
+
+nav .profile{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pic {
+  display: flex;
+}
+
+img {
+  height: 50px;
+  /* border: solid red; */
+}
